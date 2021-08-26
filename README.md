@@ -1,6 +1,7 @@
 # JsonBuddy
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/JsonBuddy`. To experiment with that code, run `bin/console` for an interactive prompt.
+More information can be found at. 
+https://michael-meade.github.io/Projects/JsonBuddy.html
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -20,9 +21,28 @@ Or install it yourself as:
 
     $ gem install JsonBuddy
 
+    $ gem install jsonbuddy-0.1.1.gem
+
 ## Usage
 
-TODO: Write usage instructions here
+
+
+```ruby
+require 'JsonBuddy'
+j = Json.new("test.json")
+
+j.add_key("cheese", 67)
+
+j.add_number("cheese", 33)
+
+j.subtract_number("cheese", 22)
+
+j.change_value("cheese", 34)
+
+jj = Json.new("test.json") # {"0": "https://google.com"}
+
+jj.next_key("https://yahoo.com") # {"0": "https://google.com", "1": "https://yahoo.com"}
+```
 
 ## Development
 
