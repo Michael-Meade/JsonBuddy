@@ -3,7 +3,7 @@
 More information can be found at. 
 https://michael-meade.github.io/Projects/JsonBuddy.html
 
-TODO: Delete this and the text above, and describe your gem
+
 
 ## Installation
 
@@ -24,8 +24,6 @@ Or install it yourself as:
     $ gem install jsonbuddy-0.1.1.gem
 
 ## Usage
-
-
 
 ```ruby
 require 'JsonBuddy'
