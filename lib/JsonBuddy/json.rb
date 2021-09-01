@@ -24,9 +24,14 @@ class Json
 		File.open(@file_path, "w") { |f| f.write(r.to_json) }
 	end
 	def add(json)
+		# Merge another JSON hash to it
 		r = read_file.to_h
 		r.merge!(json)
 		File.open(@file_path, "w") { |f| f.write(r.to_json) }
+	end
+	def get_value(key)
+		r = read_file.to_h
+		return r[key]
 	end
 	def next_key(value)
 		# if the last key was 10 then this method will
@@ -34,14 +39,26 @@ class Json
 		r = read_file.to_h
 		if r.keys.last.to_i.is_a? Integer
 			new_key   = r.keys.last.to_i
-			r[new_key += 1] = value
-			File.open(@file_path, "w") { |f| f.write(r.to_json) }
+			begin
+				r[new_key += 1] = value
+			rescue NoMethodError
+				r[new_key] = 0
+			end
+				File.open(@file_path, "w") { |f| f.write(r.to_json) }
 		end
 	end
 	def change_value(key_to_change, value_change )
 		r = read_file.to_h
 		r[key_to_change] = value_change
 		File.open(@file_path, "w") { |f| f.write(r.to_json) }
+	end
+	def check_key(key)
+		r = read_file.to_h
+		if r.has_key?(key)
+			return true
+		else 
+			return false
+		end
 	end
 	def add_number(key, number)
 		if number.is_a? Integer or number.is_a? Float

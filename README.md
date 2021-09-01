@@ -28,8 +28,9 @@ Or install it yourself as:
 ```ruby
 require 'JsonBuddy'
 j = Json.new("test.json")
-
-j.add_key("cheese", 67)
+#           key      # value
+j.add_key("cheese",    67)
+j.add_key("cheese",    0)
 
 j.add_number("cheese", 33)
 
@@ -37,9 +38,14 @@ j.subtract_number("cheese", 22)
 
 j.change_value("cheese", 34)
 
-jj = Json.new("test.json") # {"0": "https://google.com"}
+jj = Json.new("test.json").new_key # {"0": "https://google.com"}
 
 jj.next_key("https://yahoo.com") # {"0": "https://google.com", "1": "https://yahoo.com"}
+
+# add a json hash to the current json file.
+jj = Json.new("test.json") 
+json = {'milk': 1.99}
+jj.add(json)
 ```
 
 ## Development
